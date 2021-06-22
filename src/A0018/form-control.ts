@@ -1,3 +1,5 @@
+import isEmail from 'validator/lib/isEmail';
+
 const SHOW_ERROR_MESSAGES = 'show-error-message';
 
 const form = document.querySelector('.form') as HTMLFormElement;
@@ -9,7 +11,21 @@ const password2 = document.querySelector('.password2') as HTMLInputElement;
 form.addEventListener('submit', (event: Event) => {
   event.preventDefault();
   hideErroMessage(form);
+  checkForEmptyFields(username, email, password, password2);
+  checkEmail(email);
 });
+
+function checkEmail(input: HTMLInputElement): void {
+  if (!isEmail(input.value)) showErroMessage(input, 'E-mail inválido');
+}
+
+function checkForEmptyFields(...inputs: HTMLInputElement[]): void {
+  inputs.forEach((input) => {
+    if (!input.value) {
+      showErroMessage(input, 'Este campo não deve ficar vazio');
+    }
+  });
+}
 
 function hideErroMessage(form: HTMLFormElement): void {
   form.querySelectorAll(`.${SHOW_ERROR_MESSAGES}`).forEach((v) => {
@@ -19,12 +35,12 @@ function hideErroMessage(form: HTMLFormElement): void {
 
 function showErroMessage(input: HTMLInputElement, msg: string): void {
   const formFilds = input.parentElement as HTMLDivElement;
-  const errorMessage = document.querySelector(
+  const errorMessage = formFilds.querySelector(
     '.error-message',
-  ) as HTMLDivElement;
+  ) as HTMLSpanElement;
   errorMessage.innerText = msg;
   formFilds.classList.add(SHOW_ERROR_MESSAGES);
 }
 
-showErroMessage(username, 'sssss');
-hideErroMessage(form);
+// showErroMessage(username, 'sssss');
+// hideErroMessage(form);

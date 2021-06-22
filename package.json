@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/emerson-acacio-fs/exemplo-typeScript#readme",
   "devDependencies": {
+    "@types/validator": "^13.1.4",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
     "eslint": "^7.28.0",
@@ -33,6 +34,7 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
-    "@types/node": "^15.12.2"
+    "@types/node": "^15.12.2",
+    "validator": "^13.6.0"
   }
 }
