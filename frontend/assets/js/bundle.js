@@ -2,35 +2,36 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/A0018/index.ts":
-/*!****************************!*\
-  !*** ./src/A0018/index.ts ***!
-  \****************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ "./src/A0018/form-control.ts":
+/*!***********************************!*\
+  !*** ./src/A0018/form-control.ts ***!
+  \***********************************/
+/***/ (() => {
 
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var mod_1 = __importDefault(__webpack_require__(/*! ./mod */ "./src/A0018/mod.ts"));
-// console.log('Olá mundo!');
-mod_1.default();
-
-
-/***/ }),
-
-/***/ "./src/A0018/mod.ts":
-/*!**************************!*\
-  !*** ./src/A0018/mod.ts ***!
-  \**************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.default = (function () {
-    console.log('sou o modulo');
+var SHOW_ERROR_MESSAGES = 'show-error-message';
+var form = document.querySelector('.form');
+var username = document.querySelector('.username');
+var email = document.querySelector('.email');
+var password = document.querySelector('.password');
+var password2 = document.querySelector('.password2');
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    hideErroMessage(form);
 });
+function hideErroMessage(form) {
+    form.querySelectorAll("." + SHOW_ERROR_MESSAGES).forEach(function (v) {
+        v.classList.remove(SHOW_ERROR_MESSAGES);
+    });
+}
+function showErroMessage(input, msg) {
+    var formFilds = input.parentElement;
+    var errorMessage = document.querySelector('.error-message');
+    errorMessage.innerText = msg;
+    formFilds.classList.add(SHOW_ERROR_MESSAGES);
+}
+showErroMessage(username, 'sssss');
+hideErroMessage(form);
 
 
 /***/ })
@@ -55,19 +56,26 @@ exports.default = (function () {
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module is referenced by other modules so it can't be inlined
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/A0018/index.ts");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+var exports = __webpack_exports__;
+/*!****************************!*\
+  !*** ./src/A0018/index.ts ***!
+  \****************************/
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+__webpack_require__(/*! ./form-control */ "./src/A0018/form-control.ts");
+
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=bundle.js.map
