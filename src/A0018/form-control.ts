@@ -10,7 +10,7 @@ const password2 = document.querySelector('.password2') as HTMLInputElement;
 
 form.addEventListener('submit', (event: Event) => {
   event.preventDefault();
-  hideErroMessage(form);
+  hideErroMessage(event.target as HTMLFormElement);
   checkForEmptyFields(username, email, password, password2);
   checkEmail(email);
 });
